@@ -11,10 +11,10 @@ Webterm is still in development. Open issues and PRs to discuss the design of th
 The *current* shell grammar follows the following BNF:
 
 ```
-shell-input  ::= command, ( inputs )* ;
+shell-input  ::= command, ( " ", inputs )* ;
 inputs       ::= short-switch | long-switch | argument ;
-short-switch ::= "-", ( alpha | digit ), switch-value? ;
-long-switch  ::= "--", switch-key, switch-value? ;
+short-switch ::= "-", ( alpha | digit ), " "?, switch-value? ;
+long-switch  ::= "--", switch-key, " ", switch-value? ;
 switch-key   ::= ( alpha | digit ), ( alpha | digit | "-" | "_" )* ;
 switch-value ::= ( alpha | digit ), ( char )* ;
 argument     ::= ( alpha | digit ), ( char )* ;
