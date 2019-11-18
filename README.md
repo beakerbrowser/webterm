@@ -6,6 +6,13 @@ Specs and discussions for the Webterm environment.
 
 Webterm is still in development. Open issues and PRs to discuss the design of the shell grammar and environment.
 
+Active proposals:
+
+ - [String quoting](https://github.com/beakerbrowser/webterm/issues/1)
+ - [JSON quoting](https://github.com/beakerbrowser/webterm/issues/2)
+ - [Page commands](https://github.com/beakerbrowser/webterm/issues/3)
+ - [Sub-invocations](https://github.com/beakerbrowser/webterm/issues/4)
+
 ## Current Grammar
 
 The *current* shell grammar follows the following BNF:
