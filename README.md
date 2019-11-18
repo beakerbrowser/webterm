@@ -6,12 +6,12 @@ Specs and discussions for the Webterm environment.
 
 Webterm is still in development. Open issues and PRs to discuss the design of the shell grammar and environment.
 
-Active proposals:
+**Active proposals:**
 
- - [String quoting](https://github.com/beakerbrowser/webterm/issues/1)
- - [JSON quoting](https://github.com/beakerbrowser/webterm/issues/2)
- - [Page commands](https://github.com/beakerbrowser/webterm/issues/3)
- - [Sub-invocations](https://github.com/beakerbrowser/webterm/issues/4)
+ - [#1 String quoting](https://github.com/beakerbrowser/webterm/issues/1)
+ - [#2 JSON quoting](https://github.com/beakerbrowser/webterm/issues/2)
+ - [#3 Page commands](https://github.com/beakerbrowser/webterm/issues/3)
+ - [#4 Sub-invocations](https://github.com/beakerbrowser/webterm/issues/4)
 
 ## Current Grammar
 
