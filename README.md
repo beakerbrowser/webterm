@@ -18,16 +18,51 @@ Webterm is still in development. Open issues and PRs to discuss the design of th
 The *current* shell grammar follows the following BNF:
 
 ```
-shell-input  ::= command, ( " ", inputs )* ;
-inputs       ::= short-switch | long-switch | argument ;
-short-switch ::= "-", ( alpha | digit ), " "?, switch-value? ;
-long-switch  ::= "--", switch-key, " ", switch-value? ;
-switch-key   ::= ( alpha | digit ), ( alpha | digit | "-" | "_" )* ;
-switch-value ::= ( alpha | digit ), ( char )* ;
-argument     ::= ( alpha | digit ), ( char )* ;
-alpha        ::= ? A-Z a-z ? ;
-digit        ::= ? 0-9 ? ;
-char         ::= ? all visible characters ? ;
+// Webterm Input Grammar (PEG.js)
+// ==============================
+
+Expression
+  = Term+
+  
+Term
+  = term:Switch _? { return {type: 'param', key: term.key, value: term.value} }
+  / term:String _? { return {type: 'token', value: term} }
+
+Switch "switch"
+  = '-'+ key:String _+ value:NonSwitch { return {key, value} }
+  / '-'+ key:String { return {key, value: undefined} }
+
+NonSwitch "non-switch"
+  = !'-' value:String { return value }
+
+String "string"
+  = head:Char rest:CharOrQuote* { return head + rest.join('') }
+  / '"' value:CharOr_OrSingleQuote* '"' { return value.join('') }
+  / '\'' value:CharOr_OrDoubleQuote* '\'' { return value.join('') }
+
+CharOr_OrDoubleQuote "character, whitespace, or double quote"
+  = CharOr_
+  / '"'
+
+CharOr_OrSingleQuote "character, whitespace, or single quote"
+  = CharOr_
+  / '\''
+
+CharOr_ "character or whitespace"
+  = Char
+  / _
+
+CharOrQuote "character, single quote, or double quote"
+  = Char
+  / '\''
+  / '"'
+
+Char "character"
+  = '\\ ' { return ' ' } // escaped space
+  / [^ "'\f\n\r\t\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]i // regular characters
+
+_ "whitespace"
+  = [ \t]+
 ```
 
 ## Current Execution Model
