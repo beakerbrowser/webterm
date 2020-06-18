@@ -8,7 +8,6 @@ Webterm is still in development. Open issues and PRs to discuss the design of th
 
 **Active proposals:**
 
- - [#1 String quoting](https://github.com/beakerbrowser/webterm/issues/1)
  - [#2 JSON quoting](https://github.com/beakerbrowser/webterm/issues/2)
  - [#3 Page commands](https://github.com/beakerbrowser/webterm/issues/3)
  - [#4 Sub-invocations](https://github.com/beakerbrowser/webterm/issues/4)
